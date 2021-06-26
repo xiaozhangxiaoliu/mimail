@@ -7,8 +7,8 @@ import vueaxios from 'vue-axios'
 import { baseURL } from './env'
 Vue.use(vueaxios, axios);
 
-// axios.defaults.baseURL = '/api';
-axios.defaults.timeout = 8000;
+axios.defaults.baseURL = '/api';
+axios.defaults.timeout = 5000;
 //路由拦截
 axios.interceptors.response.use((response) => {
     let res = response.data;

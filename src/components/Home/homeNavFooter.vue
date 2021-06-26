@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">尾部</div>
+  <div class="footer"></div>
 </template>
 
 <script>

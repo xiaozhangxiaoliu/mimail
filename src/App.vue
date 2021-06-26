@@ -8,9 +8,9 @@
 <script>
 export default {
   mounted() {
-    this.axios.get("/mock/user/login.json").then((res) => {
-      console.log(res);
-    });
+    // this.axios.get("/mock/user/login.json").then((res) => {
+    //   console.log(res);
+    // });
   },
 };
 </script>
