@@ -12,7 +12,7 @@ const routes = [{
     },
     children: [{
             path: '/index',
-            name: 'iindex',
+            name: 'index',
             component: () =>
                 import ('../views/home/children/index.vue')
         },
