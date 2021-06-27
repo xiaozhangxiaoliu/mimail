@@ -1,10 +1,17 @@
 <template>
-  <div class="index"></div>
+  <div class="index">
+    <service-bar></service-bar>
+  </div>
 </template>
 
 <script>
-export default {};
+import ServiceBar from "../../../components/Home/ServiceBar.vue";
+
+export default {
+  components: { ServiceBar },
+};
 </script>
 
 <style>
+@import "../../../assets/scss/base.scss";
 </style>
