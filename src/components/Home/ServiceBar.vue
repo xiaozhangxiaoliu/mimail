@@ -25,7 +25,6 @@ export default {};
 .container {
   ul {
     display: flex;
-
     align-items: center;
     li {
       width: 24.9%;
