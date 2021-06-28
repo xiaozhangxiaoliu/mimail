@@ -87,43 +87,43 @@
 export default {
   data() {
     return {
-      username: "jack",
+      username: 'jack',
       phoneList: [],
-    };
+    }
   },
 
   mounted() {
-    this.getProductList();
+    this.getProductList()
   },
   methods: {
     getProductList() {
       this.axios
-        .get("/products", {
+        .get('/products', {
           params: {
-            categoryId: "100012",
+            categoryId: '100012',
             pageSize: 6,
           },
         })
         .then((res) => {
-          this.phoneList = res.list;
-        });
+          this.phoneList = res.list
+        })
     },
   },
   filters: {
     currency(val) {
       if (!val) {
-        return "0.00";
+        return '0.00'
       } else {
-        return "￥" + val.toFixed(2) + "元";
+        return '￥' + val.toFixed(2) + '元'
       }
     },
   },
-};
+}
 </script>
 
 <style lang='scss' scoped>
-@import "../../assets/scss/base.scss";
-@import "../../assets/scss/config.scss";
+@import '../../assets/scss/base.scss';
+@import '../../assets/scss/config.scss';
 .header {
   .nav-top {
     height: 39px;
@@ -145,7 +145,7 @@ export default {
           @include bgImg(
             16px,
             12px,
-            "../../../public/imgs/icon-cart-checked.png",
+            '../../../public/imgs/icon-cart-checked.png',
             16px 12px
           );
           margin-right: 4px;
@@ -170,23 +170,23 @@ export default {
           height: 55px;
 
           &::before {
-            content: "";
+            content: '';
             display: inline-block;
             @include bgImg(
               55px,
               55px,
-              "../../../public/imgs/mi-logo.png",
+              '../../../public/imgs/mi-logo.png',
               55px
             );
             transition: margin 0.3s;
           }
           &::after {
-            content: "";
+            content: '';
             display: inline-block;
             @include bgImg(
               55px,
               55px,
-              "../../../public/imgs/mi-home.png",
+              '../../../public/imgs/mi-home.png',
               55px
             );
           }
@@ -215,7 +215,7 @@ export default {
             width: 1226px;
             border-top: 1px solid #e5e5e5;
             box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
-            z-index: 999;
+            z-index: 9999;
             transition: all 0.5s;
             overflow: hidden;
             opacity: 0;
@@ -229,7 +229,7 @@ export default {
                 height: 220px;
                 line-height: 12px !important;
                 &:before {
-                  content: " ";
+                  content: ' ';
                   position: absolute;
                   top: 25px;
                   right: -10px;
@@ -292,7 +292,7 @@ export default {
             display: inline-block;
             width: 18px;
             height: 18px;
-            background: url("../../../public/imgs/icon-search.png") no-repeat
+            background: url('../../../public/imgs/icon-search.png') no-repeat
               center;
             background-size: contain;
             margin-left: 14px;
