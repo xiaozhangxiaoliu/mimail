@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="nav-top">
-      <div class="contanier">
+      <div class="container">
         <div class="toper-menu">
           <a href="javascript:;">小米商城</a>
           <a href="javascript:;">MUI</a>
@@ -9,7 +9,7 @@
           <a href="javascript:;">协议规则</a>
         </div>
         <div class="toper-user">
-          <a href="javascript:;">登录</a>
+          <a href="javascript:;" @click="login">登录</a>
           <a href="javascript:;">注册</a>
           <a href="javascript:;" class="my-cart">
             <span class="icon-font"></span> 购物车</a
@@ -87,56 +87,61 @@
 export default {
   data() {
     return {
-      username: 'jack',
+      username: "jack",
       phoneList: [],
-    }
+    };
   },
 
   mounted() {
-    this.getProductList()
+    this.getProductList();
   },
   methods: {
+    login() {
+      this.$router.push("/login");
+    },
     getProductList() {
       this.axios
-        .get('/products', {
+        .get("/products", {
           params: {
-            categoryId: '100012',
+            categoryId: "100012",
             pageSize: 6,
           },
         })
         .then((res) => {
-          this.phoneList = res.list
-        })
+          this.phoneList = res.list;
+        });
     },
   },
   filters: {
     currency(val) {
       if (!val) {
-        return '0.00'
+        return "0.00";
       } else {
-        return '￥' + val.toFixed(2) + '元'
+        return "￥" + val.toFixed(2) + "元";
       }
     },
   },
-}
+};
 </script>
 
 <style lang='scss' scoped>
-@import '../../assets/scss/base.scss';
-@import '../../assets/scss/config.scss';
+@import "../../assets/scss/base.scss";
+@import "../../assets/scss/config.scss";
 .header {
   .nav-top {
     height: 39px;
     background-color: #333333;
     line-height: 39px;
-    .contanier {
+    .container {
       @include flex();
       a {
         display: inline-block;
         color: #b0b0b0;
         margin-right: 17px;
       }
+
       .my-cart {
+        margin-right: 0px;
         width: 110px;
         background-color: #ff6600;
         text-align: center;
@@ -145,7 +150,7 @@ export default {
           @include bgImg(
             16px,
             12px,
-            '../../../public/imgs/icon-cart-checked.png',
+            "../../../public/imgs/icon-cart-checked.png",
             16px 12px
           );
           margin-right: 4px;
@@ -170,23 +175,23 @@ export default {
           height: 55px;
 
           &::before {
-            content: '';
+            content: "";
             display: inline-block;
             @include bgImg(
               55px,
               55px,
-              '../../../public/imgs/mi-logo.png',
+              "../../../public/imgs/mi-logo.png",
               55px
             );
             transition: margin 0.3s;
           }
           &::after {
-            content: '';
+            content: "";
             display: inline-block;
             @include bgImg(
               55px,
               55px,
-              '../../../public/imgs/mi-home.png',
+              "../../../public/imgs/mi-home.png",
               55px
             );
           }
@@ -229,7 +234,7 @@ export default {
                 height: 220px;
                 line-height: 12px !important;
                 &:before {
-                  content: ' ';
+                  content: " ";
                   position: absolute;
                   top: 25px;
                   right: -10px;
@@ -292,7 +297,7 @@ export default {
             display: inline-block;
             width: 18px;
             height: 18px;
-            background: url('../../../public/imgs/icon-search.png') no-repeat
+            background: url("../../../public/imgs/icon-search.png") no-repeat
               center;
             background-size: contain;
             margin-left: 14px;

@@ -102,7 +102,7 @@
     <modal
       :title="'提示'"
       :sureText="'查看购物车'"
-      :btntype="2"
+      :btntype="1"
       :modalType="'middle'"
       :showModal="showModal"
       v-on:cancel="showModal = false"

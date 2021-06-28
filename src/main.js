@@ -5,20 +5,27 @@ import store from './store'
 import axios from 'axios'
 import vueaxios from 'vue-axios'
 import VueLazyLoad from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
 import { baseURL } from './env'
 Vue.use(vueaxios, axios);
-
+Vue.use(VueCookie);
 axios.defaults.baseURL = '/api';
 axios.defaults.timeout = 5000;
 //路由拦截
 axios.interceptors.response.use((response) => {
     let res = response.data;
+    let path = location.hash;
+
     if (res.status == 0) {
+        console.log(res.status);
         return res.data
     } else if (res.status == 10) {
-        window.location.href = '/#/login'
+        if (path != '#/index') {
+            window.location.href = '/#/login';
+        }
     } else {
         alert(res.msg)
+        return Promise.reject(res);
     }
 }, (err) => {
     throw new Error(err.message)
