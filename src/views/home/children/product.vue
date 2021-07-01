@@ -1,6 +1,9 @@
 <template>
   <div class="product">
     <productparam>
+      <template v-slot:pname>
+        {{ product.name }}
+      </template>
       <template v-slot:buy>
         <button class="btn" @click="buy">立即购买</button>
       </template>
@@ -82,6 +85,7 @@ export default {
     return {
       showSlide: "",
       product: {},
+
       swiperOption: {
         autoplay: true,
         slidesPerView: 3,
@@ -99,7 +103,12 @@ export default {
   },
   methods: {
     buy() {
-      console.log(1);
+      this.$router.push({
+        name: "detail",
+        params: {
+          id: this.$route.params.id,
+        },
+      });
     },
     getProductInfo() {
       let id = this.$route.params.id;
