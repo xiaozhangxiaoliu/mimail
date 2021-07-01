@@ -4,7 +4,6 @@ const STORAGE_KEY = 'mall';
 export default {
     setItem(key, value, module_name) {
 
-
         if (module_name) {
             let val = this.getItem(module_name);
             val[key] = value;

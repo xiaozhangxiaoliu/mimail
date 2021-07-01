@@ -9,10 +9,15 @@
           <a href="javascript:;">协议规则</a>
         </div>
         <div class="toper-user">
-          <a href="javascript:;" @click="login">登录</a>
-          <a href="javascript:;">注册</a>
+          <a href="javascript:;" @click="login" v-if="!$store.state.username">
+            登录
+          </a>
+          <a href="javascript:;" v-else>{{ $store.state.username }}</a>
+          <a href="javascript:;" v-show="!$store.state.username">注册</a>
           <a href="javascript:;" class="my-cart">
-            <span class="icon-font"></span> 购物车</a
+            <span class="icon-font"></span> 购物车({{
+              $store.state.cartCount
+            }})</a
           >
         </div>
       </div>

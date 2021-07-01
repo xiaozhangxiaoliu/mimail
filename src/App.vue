@@ -8,21 +8,22 @@
 <script>
 export default {
   mounted() {
-    // this.axios.get("/mock/user/login.json").then((res) => {
-    //   console.log(res);
-    // });
-    this.getUser();
-    this.getcatCount();
+    if (this.$cookie.get("userId")) {
+      this.getUser();
+      this.getcatCount();
+    }
   },
   methods: {
     getUser() {
       this.axios.get("/user").then((res) => {
         console.log(res);
+        this.$store.dispatch("saveUserName", res.username);
       });
     },
     getcatCount() {
       this.axios.get("/carts/products/sum").then((res) => {
         console.log(res);
+        this.$store.dispatch("saveCartCount", res);
       });
     },
   },
