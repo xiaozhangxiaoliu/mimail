@@ -123,7 +123,15 @@ export default {
   },
   methods: {
     addCart() {
-      console.log(1);
+      this.axios
+        .post("/carts", {
+          productId: this.id,
+          selected: true,
+        })
+        .then((res = { cartProductVoList: 0 }) => {
+          console.log(res);
+          this.$store.dispatch("saveCartCount", res.cartTotalQuantity);
+        });
     },
     getProductInfo() {
       this.axios.get(`/products/${this.id}`).then((res) => {

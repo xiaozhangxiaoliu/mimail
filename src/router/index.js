@@ -33,6 +33,11 @@ const routes = [{
         path: '/login',
         component: () =>
             import ('../views/login/login.vue')
+    },
+    {
+        path: '/cart',
+        component: () =>
+            import ('../views/cart/cart.vue')
     }
 
 ]
@@ -41,7 +46,22 @@ const router = new VueRouter({
     routes,
     scrollBehavior(to, from, savedPosition) {
         return { x: 0, y: 0 }
+    },
+
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.path == '/cart') {
+        console.log(document.cookie);
+        if (document.cookie) {
+            next();
+        } else {
+            next({ path: '/login', })
+        }
+    } else {
+        next()
     }
+
 })
 
 export default router

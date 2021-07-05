@@ -14,7 +14,7 @@
           </a>
           <a href="javascript:;" v-else>{{ $store.state.username }}</a>
           <a href="javascript:;" v-show="!$store.state.username">注册</a>
-          <a href="javascript:;" class="my-cart">
+          <a href="javascript:;" class="my-cart" @click="gocart">
             <span class="icon-font"></span> 购物车({{
               $store.state.cartCount
             }})</a
@@ -101,6 +101,9 @@ export default {
     this.getProductList();
   },
   methods: {
+    gocart() {
+      this.$router.push("/cart");
+    },
     login() {
       this.$router.push("/login");
     },
